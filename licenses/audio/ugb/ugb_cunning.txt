@@ -1,18 +1,7 @@
-https://opengameart.org/content/apple-bite
+https://opengameart.org/content/cunning-plan-short-seamless-loop
 
 CC0 License
 
-Description:
+Short ~10 second loop, good for pre-game screens or lulls in action.
 
-Biting an apple sound extracted from https://freesound.org/s/333825/.
-
-Details:
-
-Format: OGG/Vorbis
-Bit rate: 96k
-Sample rate: 44100Hz
-Channels: 1
-Licensing:
-
-Creative Commons Zero (CC0)
-Canonical link: https://opengameart.org/node/132358
+Made for https://tic.computer/play?cart=1179

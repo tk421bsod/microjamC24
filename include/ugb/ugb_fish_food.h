@@ -11,9 +11,9 @@
 #include <bn_regular_bg_ptr.h>
 
 namespace ugb {
-    class ugb_game_name : public mj::game {
+    class ugb_fish_food : public mj::game {
         public:
-            ugb_game_name(int completed_games, const mj::game_data& data);
+            ugb_fish_food(int completed_games, const mj::game_data& data);
 
             void update_score(const bn::sprite_text_generator& text_generator);
 

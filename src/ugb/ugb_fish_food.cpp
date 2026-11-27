@@ -2,7 +2,7 @@
 #include <bn_string.h>
 
 #include "ugb/ugb_entity_manager.h"
-#include "ugb/ugb_game_name.h"
+#include "ugb/ugb_fish_food.h"
 
 #include "mj/mj_game_list.h"
 #include "mj/mj_game.h"
@@ -15,19 +15,19 @@ namespace
 {
     constexpr bn::string_view code_credits[] = { "Nick B and Colin R" };
     constexpr bn::string_view graphics_credits[] = { "Nick B and Colin R" };
-    constexpr bn::string_view sfx_credits[] = {""};
-    constexpr bn::string_view music_credits[] = {""};
+    constexpr bn::string_view sfx_credits[] = {"Spring Spring"};
+    constexpr bn::string_view music_credits[] = {"congusbongus"};
 }
 
     // Macros used to add game to game list
-    MJ_GAME_LIST_ADD(ugb::ugb_game_name)
+    MJ_GAME_LIST_ADD(ugb::ugb_fish_food)
     MJ_GAME_LIST_ADD_CODE_CREDITS(code_credits)
     MJ_GAME_LIST_ADD_GRAPHICS_CREDITS(graphics_credits)
     MJ_GAME_LIST_ADD_MUSIC_CREDITS(music_credits)
     MJ_GAME_LIST_ADD_SFX_CREDITS(sfx_credits)
 
 namespace ugb {
-    ugb_game_name::ugb_game_name([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data) : 
+    ugb_fish_food::ugb_fish_food([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data) : 
     mj::game("ugb"), _player(constants::player::INITIAL_X, constants::player::INITIAL_Y, constants::player::SPEED), 
     _background(bn::regular_bg_items::ugb_background.create_bg(0, 0)) 
 
@@ -69,21 +69,21 @@ namespace ugb {
 
     }
 
-    void ugb_game_name::update_score(const bn::sprite_text_generator& text_generator) {
+    void ugb_fish_food::update_score(const bn::sprite_text_generator& text_generator) {
         _state.score_sprites.clear();
         bn::string<constants::MAX_SCORE_CHARS> score_string = bn::to_string<constants::MAX_SCORE_CHARS>(_state.score);
         text_generator.generate(constants::score::SCORE_X, constants::score::SCORE_Y, score_string, _state.score_sprites);
     }
 
-    bn::string<16> ugb_game_name::title() const {
+    bn::string<16> ugb_fish_food::title() const {
         return "Eat little fish";
     }
 
-    int ugb_game_name::total_frames() const {
+    int ugb_fish_food::total_frames() const {
         return 600; // 10 seconds
     }
 
-    bool ugb_game_name::victory() const {
+    bool ugb_fish_food::victory() const {
         if (_state.hit_hook) {
             return false;
         }
@@ -93,7 +93,7 @@ namespace ugb {
         return false;
     }
 
-    mj::game_result ugb_game_name::play([[maybe_unused]] const mj::game_data& data) {
+    mj::game_result ugb_fish_food::play([[maybe_unused]] const mj::game_data& data) {
 
         //GAME LOOP STUFF
         _player.update();
@@ -126,11 +126,11 @@ namespace ugb {
         return result;
     }
 
-    void ugb_game_name::fade_in([[maybe_unused]] const mj::game_data &data) {
+    void ugb_fish_food::fade_in([[maybe_unused]] const mj::game_data &data) {
 
     }
 
-    void ugb_game_name::fade_out([[maybe_unused]] const mj::game_data &data) {
+    void ugb_fish_food::fade_out([[maybe_unused]] const mj::game_data &data) {
 
     }
 
