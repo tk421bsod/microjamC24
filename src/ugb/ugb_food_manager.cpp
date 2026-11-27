@@ -1,4 +1,5 @@
 #include "ugb/ugb_food_manager.h"
+#include "bn_sound_items.h"
 
 namespace ugb {
     FoodManager::FoodManager() {
@@ -10,6 +11,10 @@ namespace ugb {
     for (int i = 0; i < food.size(); i++) {
         if (player_box.intersects(food[i].bounding_box())) {
             food.erase(food.begin() + i);
+
+            //add sound effect when you eat a food
+            bn::sound_items::ugb_power_up.play();
+
             return 1;
         }
     }
