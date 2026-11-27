@@ -7,6 +7,7 @@
 #include "mj/mj_game_list.h"
 #include "mj/mj_game.h"
 
+#include "bn_sound_items.h"
 #include "bn_regular_bg_items_ugb_background.h"
 
 // String arrays for the credits can go in an anonymous namespace
@@ -33,8 +34,10 @@ namespace ugb {
     {
         // Get recommended difficulty level
         mj::difficulty_level difficulty = recommended_difficulty_level(completed_games, data);
+
         // Convert it to an int for array indexing
         int difficulty_ind = static_cast<int>(difficulty);
+
         // Tune some things for this difficulty level
         _state.required_score = constants::difficulty::REQUIRED_SCORE[difficulty_ind];
         _state.hook_count = constants::difficulty::HOOK_SPAWNS[difficulty_ind];
@@ -42,6 +45,8 @@ namespace ugb {
         // Initialize score
         update_score(data.text_generator);
 
+        //play sound
+        play_sound(bn::sound_items::ugb_cunning, completed_games, data);
 
         // Spawn food
         bn::fixed_point spawn_location;
